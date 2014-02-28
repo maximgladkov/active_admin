@@ -80,7 +80,7 @@ module ActiveAdmin
         }
         case config
         when ::ActiveAdmin::Resource
-          resources config.resource_name.route_key, only: config.defined_actions do
+          resources config.resource_name.route_key, only: config.defined_actions, constraints: { id: /.+?/ } do
             member do
               config.member_actions.each &build_action
             end
